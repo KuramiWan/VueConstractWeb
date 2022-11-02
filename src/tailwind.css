@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@layer components{
+    .section{
+        @apply
+        h-full flex flex-col justify-center items-center
+    }
+}
+@tailwind utilities;
