@@ -12,7 +12,6 @@
               <h2 class="card-title">{{kanbanList.question}}</h2>
               <p>{{kanbanList.createTime}}</p>
               <div class="card-actions justify-end">
-
               </div>
             </div>
           </div>
@@ -20,22 +19,14 @@
       </div>
     </div>
   </div>
-
 </div>
 </template>
 
 <script lang="ts" setup>
 import axios from "axios";
 let kanbanLists:Array<Object> =[]
-const stateMap = {
-  undone:"未完成",
-  done:"已完成",
-  cancel:"取消",
-  expired:"过期"
-}
-
 onMounted(() =>{
-  axios.get('/getKanban').then(
+  axios.get('/getTicket').then(
     response =>{
       kanbanLists = response.data
       console.log(kanbanLists)

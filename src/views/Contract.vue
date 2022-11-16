@@ -56,15 +56,15 @@
                   <span class="label-text-alt text-pink-600">必填</span>
                 </label>
               </div>
-              <div class="form-control w-full max-w-xs">
-                <label class="label">
-                  <span class="label-text">你的学院?</span>
-                </label>
-                <input type="text" placeholder="Type here" v-model="college" class="input input-bordered w-full max-w-xs"/>
-                <label class="label invisible">
-                  <span class="label-text-alt ">Alt label</span>
-                </label>
-              </div>
+<!--              <div class="form-control w-full max-w-xs">-->
+<!--                <label class="label">-->
+<!--                  <span class="label-text">你的学院?</span>-->
+<!--                </label>-->
+<!--                <input type="text" placeholder="Type here" v-model="college" class="input input-bordered w-full max-w-xs"/>-->
+<!--                <label class="label invisible">-->
+<!--                  <span class="label-text-alt ">Alt label</span>-->
+<!--                </label>-->
+<!--              </div>-->
               <div class="form-control w-full max-w-xs">
                 <label class="label">
                   <span class="label-text text-pink-600">你的电话?</span>
@@ -117,13 +117,12 @@ const commit =()=>{
   }
   formData.append("userName",userName.value)
   formData.append("phoneNumber",phoneNumber.value)
-  formData.append("college",phoneNumber.value)
   formData.append("question",question.value)
   formData.append("tel",tel.value)
   let headers = {
     'Content-Type': 'multipart/form-data'
   }
-  axios.post('/commit',formData,{headers:headers}).then(response =>{
+  axios.post('/addTicket',formData,{headers:headers}).then(response =>{
     console.log(response)
   }).catch(e=>{
     console.log(e)

@@ -1,10 +1,20 @@
 <template>
-  <div class="h-screen bg-cover bg-local bg-center flex items-center" style="background-image: url(https://cdn.pixabay.com/photo/2020/05/18/16/17/social-media-5187243_960_720.png)">
-    <div class="container mx-auto">
-      <div class="text-2xl">123123123</div>
-      <div class="text-center  text-base">123123</div>
+  <div class="hero min-h-screen" style="background-image: url(https://placeimg.com/1000/800/arch);">
+    <div class="hero-overlay bg-opacity-60"></div>
+    <div class="hero-content text-center text-neutral-content">
+      <div class="max-w-md">
+        <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+        <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
     </div>
   </div>
+<!--  <div class="h-screen bg-cover bg-local bg-center flex items-center" style="background-image: url(https://cdn.pixabay.com/photo/2020/05/18/16/17/social-media-5187243_960_720.png)">-->
+<!--    <div class="container mx-auto">-->
+<!--      <div class="text-2xl">123123123</div>-->
+<!--      <div class="text-center  text-base">123123</div>-->
+<!--    </div>-->
+<!--  </div>-->
   <div class="flex flex-col justify-center items-center w-full">
     <div class="flex flex-wrap flex-grow w-full  text-white ">
       <div class="px-4 bg-accent flex-grow">
@@ -77,7 +87,6 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
               </svg>
-
             </div>
             <div class="my-4">预约单</div>
             <div class="my-4">这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本</div>
@@ -87,7 +96,6 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
               </svg>
-
             </div>
             <div class="my-4">预约单</div>
             <div class="my-4">这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本</div>
@@ -97,15 +105,12 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
               </svg>
-
             </div>
             <div class="my-4">预约单</div>
             <div class="my-4">这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本</div>
           </div>
-         
         </div>
     </div>
-
   </div>
 </template>
 <script lang="ts">
