@@ -1068,6 +1068,11 @@ normalize-wheel-es@^1.2.0:
   resolved "https://registry.yarnpkg.com/normalize-wheel-es/-/normalize-wheel-es-1.2.0.tgz#0fa2593d619f7245a541652619105ab076acf09e"
   integrity sha512-Wj7+EJQ8mSuXr2iWfnujrimU35R2W4FAErEyTmJoJ7ucwTn2hOUSsRehMb5RSYkxXGTM7Y9QpvPmp++w5ftoJw==
 
+notiwind@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/notiwind/-/notiwind-1.2.6.tgz#9796792b4000d31f7b6591779b8f5320ab107cbd"
+  integrity sha512-muU2I95/D97PDf/4dzB/H+C8CMpz2Dn0hZQ7ak7t1uMbe7/h0Hjy5OAHsLLfOgnE7UMrrocgQfXE6q66QW8L7g==
+
 object-hash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-3.0.0.tgz#73f97f753e7baffc0e2cc9d6e079079744ac82e9"

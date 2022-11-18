@@ -22,7 +22,6 @@
         </ul>
       </div>
     </div>
-
     <div class="flex flex-wrap flex-grow  h-full w-full">
       <div class="md:w-1/4 bg-base-100 w-full shadow-md">
         <div class="w-full">
@@ -38,12 +37,9 @@
             </div>
             <div class="font-semibold">一个一个一个</div>
           </div>
-
         </div>
       </div>
       <div class="md:w-3/4 pl-4 bg-base-100 w-full ">
-
-
           <div class="MainContext h-full flex-col flex justify-between ">
             <ul class="steps steps-vertical">
               <li class="step step-primary">Register</li>

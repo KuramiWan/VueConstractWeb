@@ -6,13 +6,12 @@
            </div>
            <div>
              <span class="footer-title">Services</span>
-
-
+             <a href="http://localhost:5173/#/contract" class="link link-hover">服务预约</a>
+             <a href="http://localhost:5173/#/kanban" class="link link-hover">预约列表</a>
            </div>
            <div>
              <span class="footer-title">Company</span>
-             <a class="link link-hover">About us</a>
-
+             <a href="http://localhost:5173/#/" class="link link-hover">关于我们</a>
            </div>
            <div>
              <span class="footer-title">Legal</span>

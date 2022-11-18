@@ -6,7 +6,7 @@ const routes : RouteRecordRaw[] = [
         path: '/',
         name: 'layout',
         redirect: '/home',
-        component: () => import('./components/layout/Layout.vue'),
+        component: () => import('./components/Layout.vue'),
         children: [
             {
                 path: '/home',
@@ -18,11 +18,7 @@ const routes : RouteRecordRaw[] = [
                 name: 'contract',
                 component: () => import('./views/Contract.vue')
             },
-            {
-                path: '/test',
-                name: 'test',
-                component: () => import('./views/test.vue')
-            },
+
             {
                 path:'/kanban',
                 name:'kanban',
@@ -41,6 +37,31 @@ const routes : RouteRecordRaw[] = [
         ]
 
     },
+    {
+        path:'/:pathMatch(.*)*',
+        component:() =>  import("./pages/[...404].vue")
+    },
+
+    {
+        path:'/admin',
+        name:'admin',
+        redirect:'/admin/login',
+        component: () => import("./components/AdminLayout.vue"),
+        children:[
+            {
+                path: 'login',
+                name: 'login',
+                component: () => import('./views/Login.vue')
+            },
+            {
+                path: 'home',
+                name: 'adminHome',
+                component: () => import("./views/AdminHomepage.vue")
+            }
+        ]
+    },
+
+
 ]
 
 // 3.
