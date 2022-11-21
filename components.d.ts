@@ -9,7 +9,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AdminLayout: typeof import('./src/components/AdminLayout.vue')['default']
     ButtonRepo: typeof import('./src/components/ButtonRepo.vue')['default']
-    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     FileUpload: typeof import('./src/components/FileUpload.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Layout: typeof import('./src/components/Layout.vue')['default']

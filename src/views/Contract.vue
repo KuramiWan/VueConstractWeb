@@ -96,7 +96,6 @@
               </div>
               <div class="form-control w-full max-w-xs">
                 <label for="" class="label ">上传图片</label>
-                <img src="previewUpload" alt="" class="">
                 <input type="file"  accept=""  @change="uploadImage" class="" multiple>
               </div>
               <div class=" text-center">

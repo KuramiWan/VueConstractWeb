@@ -6,33 +6,51 @@ const routes : RouteRecordRaw[] = [
         path: '/',
         name: 'layout',
         redirect: '/home',
+        meta:{
+            title: '用户'
+        },
         component: () => import('./components/Layout.vue'),
         children: [
             {
                 path: '/home',
                 name: 'home',
-                component: () => import('./views/Homepage.vue')
+                component: () => import('./views/Homepage.vue'),
+                meta:{
+                    title: '首页'
+                }
             },
             {
                 path: '/contract',
                 name: 'contract',
-                component: () => import('./views/Contract.vue')
+                component: () => import('./views/Contract.vue'),
+                meta:{
+                    title:'预约界面'
+                }
             },
 
             {
                 path:'/kanban',
                 name:'kanban',
-                component:() => import('./views/Kanban.vue')
+                component:() => import('./views/Kanban.vue'),
+                meta:{
+                    title: '看板界面'
+                }
             },
             {
                 path:'/archives',
                 name:'archives',
-                component:() => import('./views/Archives.vue')
+                component:() => import('./views/Archives.vue'),
+                meta:{
+                    title: '归档页面'
+                }
             },
             {
                 path:'/archives/detail/:id',
                 name:'archives',
-                component:() =>import('./views/ArchivesDetail.vue')
+                component:() =>import('./views/ArchivesDetail.vue'),
+                meta:{
+                    title: '详情页'
+                }
             }
         ]
 
@@ -47,16 +65,25 @@ const routes : RouteRecordRaw[] = [
         name:'admin',
         redirect:'/admin/login',
         component: () => import("./components/AdminLayout.vue"),
+        meta:{
+            title: '管理员'
+        },
         children:[
             {
                 path: 'login',
                 name: 'login',
-                component: () => import('./views/Login.vue')
+                component: () => import('./views/Login.vue'),
+                meta: {
+                    title: '登录页面'
+                }
             },
             {
-                path: 'home',
-                name: 'adminHome',
-                component: () => import("./views/AdminHomepage.vue")
+                path: 'ticketManagement',
+                name: 'ticketManagement',
+                component: () => import("./views/TicketManagement.vue"),
+                meta: {
+                    title: '预约管理'
+                }
             }
         ]
     },
