@@ -1,26 +1,16 @@
 <template>
-  <div class="p-8">
-    <div class="text-4xl font-extrabold text-base-content mt-4">
-      预约管理
-    </div>
-    <div class="text-sm breadcrumbs mt-4">
-      <ul>
-        <li class="badge badge-ghost" v-for="breadCrumb in Breadcrumbs()" :key = "breadCrumb.path"><a>{{breadCrumb.meta.title}}</a></li>
-      </ul>
-    </div>
-  </div>
+
   <div class="mt-4">
 
     <div class="sm:px-6 w-full">
       <div class="px-4 md:px-10 py-4 md:py-7">
         <div class="flex items-center justify-between">
-          <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">Tasks</p>
+          <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800 dark:text-white">预约表</p>
           <div class="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 dark:text-gray-200  bg-gray-200 dark:bg-gray-800  hover:bg-gray-300   dark:hover:bg-gray-700  cursor-pointer rounded">
-            <p>Sort By:</p>
-            <select aria-label="select" class="focus:text-indigo-600 focus:outline-none bg-transparent ml-1">
-              <option class="text-sm text-indigo-800">Latest</option>
-              <option class="text-sm text-indigo-800">Oldest</option>
-              <option class="text-sm text-indigo-800">Latest</option>
+            <p>排序:</p>
+            <select aria-label="select" class="focus:text-indigo-600 focus:outline-none bg-transparent ml-1" v-model="order" @input = "selectTicket()">
+              <option class="text-sm text-indigo-800">最新</option>
+              <option class="text-sm text-indigo-800">最旧</option>
             </select>
           </div>
         </div>
@@ -28,22 +18,22 @@
       <div class="bg-white dark:bg-gray-900  py-4 md:py-7 px-4 md:px-8 xl:px-10">
         <div class="sm:flex items-center justify-between">
           <div class="flex items-center">
-            <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800" href=" javascript:void(0)">
+            <a class="rounded-full ring-1 focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800" href=" javascript:void(0)">
               <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full" @click = "selector($event)">
                 <p>已完成</p>
               </div>
             </a>
-            <a class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
+            <a class="rounded-full ring-1 focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
               <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full " @click = "selector($event)">
                 <p>已完成</p>
               </div>
             </a>
-            <a class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
+            <a class="rounded-full ring-1 focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
               <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full " @click = "selector($event)">
                 <p>已取消</p>
               </div>
             </a>
-            <a class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
+            <a class="rounded-full ring-1 focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
               <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full " @click = "selector($event)">
                 <p>已过期</p>
               </div>
@@ -56,7 +46,7 @@
         <div class="mt-7 overflow-x-auto">
           <table class="w-full whitespace-nowrap">
             <tbody>
-            <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded">
+            <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 dark:border-gray-600  rounded " v-for="ticketItem in ticketList" :key ="ticketItem.id">
               <td>
                 <div class="ml-5">
                   <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
@@ -69,17 +59,17 @@
               </td>
               <td class="">
                 <div class="flex items-center pl-5">
-                  <p class="text-base font-medium leading-none text-gray-700 dark:text-white mr-2">Marketing Keynote Presentation</p>
+                  <p class="text-base font-medium leading-none text-gray-700 dark:text-white mr-2">{{ticketItem.name}}</p>
 <!--                  <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg1.svg" alt="clip">-->
                 </div>
               </td>
+
               <td class="pl-24">
                 <div class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                   </svg>
-
-                  <p class="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">Urgent</p>
+                  <p class="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">{{ticketItem.phone}}</p>
                 </div>
               </td>
               <td class="pl-5">
@@ -87,8 +77,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
                   </svg>
-
-                  <p class="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">04/07</p>
+                  <p class="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">{{ticketItem.question}}</p>
                 </div>
               </td>
               <td class="pl-5">
@@ -96,7 +85,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                   </svg>
-                  <p class="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">23</p>
+                  <p class="text-sm leading-none text-gray-600 dark:text-gray-200  ml-2">{{ ticketItem.images}}</p>
                 </div>
               </td>
 <!--              <td class="pl-5">-->
@@ -106,22 +95,28 @@
 <!--                </div>-->
 <!--              </td>-->
               <td class="pl-5">
-                <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">Due today at 18:00</button>
+                <button class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">{{ticketItem.createTime}}</button>
               </td>
               <td class="pl-4">
-                <button class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 dark:text-gray-200  py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 dark:hover:bg-gray-700   dark:bg-gray-800  focus:outline-none">View</button>
+                  <select
+                      class="select max-w-xs w-full focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 dark:text-gray-200 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 dark:hover:bg-gray-700   dark:bg-gray-800  focus:outline-none" v-model="ticketItem.state" @input ="changeState($event,ticketItem.id)">
+                    <option value="已完成">已完成</option>
+                    <option value="未完成">未完成</option>
+                    <option value="已取消">已取消</option>
+                    <option value="已过期">已过期</option>
+                  </select>
               </td>
               <td>
                 <div class="relative px-5 pt-2">
-                  <button class="focus:ring-2 rounded-md focus:outline-none" onclick="dropdownFunction(this)" role="button" aria-label="option">
-                    <img  class="dropbtn" onclick="dropdownFunction(this)" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown">
+                  <button class="focus:ring-2 rounded-md focus:outline-none"  @click = "dropdownFunction(this)" role="button" aria-label="option">
+                    <img  class="dropbtn" @click ="dropdownFunction(this)"  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown">
                   </button>
                   <div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6 hidden">
                     <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                      <p>Edit</p>
+                      <p>编辑</p>
                     </div>
                     <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                      <p>Delete</p>
+                      <p>删除</p>
                     </div>
                   </div>
                 </div>
@@ -187,15 +182,14 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
 import {request} from "../util/Interceptor";
-import {useRoute} from 'vue-router';
-const route = useRoute()
 
-function Breadcrumbs(){
-  console.log(route.matched)
-  return route.matched;
-}
-function alertItem(){
+let ticketList = ref([]);
+let order = ref('最新')
+let state = ref('')
+
+function alterItem(id,state){
   request.post('admin/alterTicket',{
     id : id,
     state : state
@@ -204,24 +198,34 @@ function alertItem(){
     console.log(error)
   })
 }
+function changeState(event,id){
+  alterItem(id,event.target.value)
+}
 function deleteItem(){
 
 }
 function add(){
 
 }
-function selector(event){
-  let state = event.target.firstChild.data
+function selectTicket(){
+  console.log(order)
+  let data;
   request.get('admin/getTicket',{
-      params:{
-        state: state
-      }
+    params:{
+      state: state,
+      order: order.value
+    }
   }).then(response =>{
-    let data = response.data.data
-    console.log(data)
+    data = response.data.data
+    ticketList.value = data;
   }).catch(error =>{
     console.log(error)
   })
+}
+
+function selector(event){
+  state = event.target.firstChild.data;
+  selectTicket();
 }
 function dropdownFunction(element) {
   let dropdowns = document.getElementsByClassName("dropdown-content");
@@ -235,6 +239,12 @@ function dropdownFunction(element) {
   }
   list.classList.toggle("hidden");
 }
+onMounted(()=>{
+  selectTicket("已完成")
+})
+//排序
+
+
 </script>
 
 <style scoped>

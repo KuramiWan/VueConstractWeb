@@ -63,32 +63,39 @@ const routes : RouteRecordRaw[] = [
     {
         path:'/admin',
         name:'admin',
-        redirect:'/admin/login',
+        redirect:'/login',
         component: () => import("./components/AdminLayout.vue"),
         meta:{
             title: '管理员'
         },
         children:[
             {
-                path: 'login',
-                name: 'login',
-                component: () => import('./views/Login.vue'),
-                meta: {
-                    title: '登录页面'
-                }
-            },
-            {
-                path: 'ticketManagement',
-                name: 'ticketManagement',
+                path: '/admin/ticketManagementHome',
+                name: 'ticketManagementHome',
                 component: () => import("./views/TicketManagement.vue"),
                 meta: {
                     title: '预约管理'
+                },
+            },
+            {
+                path: '/admin/ticketManagement/:id',
+                name:'ticketManagement',
+                component: () => import("./views/AlterTicket.vue"),
+                meta:{
+                    title: '修改预约单'
                 }
             }
+
         ]
     },
-
-
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('./views/Login.vue'),
+        meta: {
+            title: '登录页面'
+        }
+    }
 ]
 
 // 3.

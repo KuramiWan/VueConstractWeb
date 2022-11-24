@@ -28,13 +28,11 @@ import {request} from "../util/Interceptor";
 
 let kanbanLists=ref([
   {
-
       state:String,
       userTicketVoList:[{
         question:String,
         createTime:String
-        }]
-
+      }]
   }
 
     ]);
