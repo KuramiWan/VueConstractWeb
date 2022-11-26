@@ -193,8 +193,7 @@ function alterItem(id,state){
   request.post('admin/alterTicket',{
     id : id,
     state : state
-  }).then(response =>{
-  }).catch(error =>{
+  }).then().catch(error =>{
     console.log(error)
   })
 }
@@ -210,7 +209,7 @@ function add(){
 function selectTicket(){
   console.log(order)
   let data;
-  request.get('admin/getTicket',{
+  request.get('/admin/getTicketList',{
     params:{
       state: state,
       order: order.value
