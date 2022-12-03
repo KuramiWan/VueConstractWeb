@@ -1,12 +1,12 @@
 <template>
-<div class="container h-full w-full flex  justify-center">
-  <div class="my-8 px-4 w-1/2 flex flex-col items-center">
-    <div class="form-control w-full max-w-xs">
+<div class="container flex-grow flex justify-center items-center">
+  <div class="my-8 px-4  flex flex-col items-center   ">
+    <div class="form-control max-w-xs ">
       <label class="label">
-        <span class="label-text">你的姓名?</span>
+        <span class="label-text">姓名</span>
       </label>
       <input type="text" placeholder="Type here" required v-model="userName"
-             class="peer focus:invalid:border-pink-500 focus:invalid:ring-pink-600 input input-bordered  w-full max-w-xs"/>
+             class="peer focus:invalid:border-pink-500 focus:invalid:ring-pink-600 input input-bordered  w-full max-w-xs w-80"/>
       <label class="label peer-required:visible ">
         <span class="label-text-alt text-pink-600">必填</span>
       </label>
@@ -22,7 +22,7 @@
     <!--              </div>-->
     <div class="form-control w-full max-w-xs">
       <label class="label">
-        <span class="label-text text-pink-600">你的电话?</span>
+        <span class="label-text text-pink-600">电话</span>
       </label>
       <input type="tel" placeholder="Type here" required v-model="tel"
              pattern="^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[01356789]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|6[567]\d{2}|4(?:[14]0\d{3}|[68]\d{4}|[579]\d{2}))\d{6}$"
@@ -33,7 +33,7 @@
     </div>
     <div class="form-control w-full max-w-xs">
       <label class="label">
-        <span class="label-text text-pink-600">你的问题?</span>
+        <span class="label-text text-pink-600">问题</span>
       </label>
       <textarea class="textarea textarea-bordered h-24 peer"  v-model="question"  required placeholder="Bio"></textarea>
       <label class="label peer-required:visible invisible">

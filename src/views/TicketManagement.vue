@@ -108,17 +108,33 @@
               </td>
               <td>
                 <div class="relative px-5 pt-2">
-                  <button class="focus:ring-2 rounded-md focus:outline-none"  @click = "dropdownFunction(this)" role="button" aria-label="option">
-                    <img  class="dropbtn" @click ="dropdownFunction(this)"  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown">
-                  </button>
-                  <div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6 hidden">
-                    <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                      <p>编辑</p>
-                    </div>
-                    <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">
-                      <p>删除</p>
-                    </div>
+                  <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost btn-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                    </label>
+                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-base-200 border">
+                      <li><a>编辑</a></li>
+                      <li><a>删除</a></li>
+
+                    </ul>
                   </div>
+<!--                  <button class="focus:ring-2 rounded-md focus:outline-none"  @click ="dropdownFunction(this)" role="button" aria-label="option">-->
+<!--                    <img  class="dropbtn"   src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg6.svg" alt="dropdown">-->
+<!--                  </button>-->
+<!--                  <nav class="navbar dropdown">-->
+<!--                    <ul class="menu menu-compact bg-base-100 w-56 p-2 rounded-box border ">-->
+<!--                      <li><a>编辑</a></li>-->
+<!--                      <li><a>删除</a></li>-->
+<!--                    </ul>-->
+<!--                  </nav>-->
+<!--                  <div class="dropdown-content bg-white shadow w-24 absolute z-30 right-0 mr-6 hidden">-->
+<!--                    <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">-->
+<!--                      <p>编辑</p>-->
+<!--                    </div>-->
+<!--                    <div tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white">-->
+<!--                      <p>删除</p>-->
+<!--                    </div>-->
+<!--                  </div>-->
                 </div>
               </td>
             </tr>
@@ -227,16 +243,8 @@ function selector(event){
   selectTicket();
 }
 function dropdownFunction(element) {
-  let dropdowns = document.getElementsByClassName("dropdown-content");
-  let i;
-  let list = element.parentElement.parentElement.getElementsByClassName("dropdown-content")[0];
-  list.classList.add("target");
-  for (i = 0; i < dropdowns.length; i++) {
-    if (!dropdowns[i].classList.contains("target")) {
-      dropdowns[i].classList.add("hidden");
-    }
-  }
-  list.classList.toggle("hidden");
+  console.log(element)
+
 }
 onMounted(()=>{
   selectTicket("已完成")

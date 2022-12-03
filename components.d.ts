@@ -11,7 +11,6 @@ declare module '@vue/runtime-core' {
     ButtonRepo: typeof import('./src/components/ButtonRepo.vue')['default']
     FileUpload: typeof import('./src/components/FileUpload.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
-    Form: typeof import('./src/components/TicketForm.vue')['default']
     Layout: typeof import('./src/components/Layout.vue')['default']
     NavBar: typeof import('./src/components/layout/NavBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

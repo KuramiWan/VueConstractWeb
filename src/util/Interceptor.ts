@@ -2,7 +2,9 @@ import axios from "axios";
 import {notify} from "notiwind";
 
     const request = axios.create({
-        baseURL: 'http://127.0.0.1:4523/m1/1712853-0-default',
+        baseURL: 'http://127.0.0.1:4523/m1/1712853-0-default/api',
+        // baseURL: 'http://localhost:8880/api',
+        // baseURL: 'http://45.152.67.136:8880/api',
         timeout: 3000
     })
     request.interceptors.response.use(

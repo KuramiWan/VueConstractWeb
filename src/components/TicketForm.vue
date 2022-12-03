@@ -1,5 +1,5 @@
 <template>
-  <form class="justify-center items-center">
+  <div class="justify-center items-center">
     <div class="form-control w-full max-w-xs">
       <label class="label">
         <span class="label-text">你的姓名?</span>
@@ -23,7 +23,7 @@
       <label class="label">
         <span class="label-text text-pink-600">你的电话?</span>
       </label>
-      <input type="tel" placeholder="Type here" required v-model="tel"
+      <input type="tel" placeholder="Type here" required v-model="phone"
              pattern="^(?:\+?86)?1(?:3\d{3}|5[^4\D]\d{2}|8\d{3}|7(?:[01356789]\d{2}|4(?:0\d|1[0-2]|9\d))|9[189]\d{2}|6[567]\d{2}|4(?:[14]0\d{3}|[68]\d{4}|[579]\d{2}))\d{6}$"
              class="input peer input-bordered w-full max-w-xs focus:invalid:ring-pink-600 focus:invalid:border-pink-500"/>
       <label class="label peer-invalid:visible invisible ">
@@ -46,13 +46,18 @@
     <div class=" text-center">
       <button class="btn btn-primary rounded-full mt-4" @click="commit">提交预约</button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from "vue";
 import {request} from "../util/Interceptor";
-let img: string | any[] | null = [], phoneNumber = ref(''),
+import {useRouter} from "vue-router";
+import {notify} from "notiwind";
+//正则
+const phoneMatch = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/
+const router = useRouter();
+let img: string | any[] | null = [], phone = ref(''),
     userName = ref(''),
     question = ref(''), tel = ref(''),
     previewImage: String | ArrayBuffer | null = null;
@@ -61,26 +66,50 @@ const uploadImage = (e:any) =>{
   img = e.target.files
 }
 const commit =()=>{
+
+  if (checkForm()){
+    return false;
+  }
   let formData = new FormData();
   if (img!=null){
     for (let i = 0;i < img.length;i++) {
-      formData.append('files', img[i])
+      formData.append('images', img[i])
     }
   }
-  formData.append("userName",userName.value)
-  formData.append("phoneNumber",phoneNumber.value)
+  formData.append("name",userName.value)
+  formData.append("phone",phone.value)
   formData.append("question",question.value)
-  formData.append("tel",tel.value)
   let headers = {
     'Content-Type': 'multipart/form-data'
   }
   request.post('/addTicket',formData,{headers:headers}).then(response =>{
-    console.log(response)
+
+    router.push('/#/')
   }).catch(e=>{
     console.log(e)
   })
 }
 const checkForm = () =>{
+  console.log(userName.value)
+  if (!(userName.value&&phone.value&&question.value)){
+    notify({
+      title:"失败",
+      type:"error",
+      text:"请填写必要信息",
+      group:"failed"
+    })
+    return true;
+  }else if (!(phoneMatch.test(phone.value))){
+    notify({
+      title:"失败",
+      type:"error",
+      text:"手机号错误",
+      group:"failed"
+    })
+    return true;
+  }else {
+    return false;
+  }
 }
 </script>
 
