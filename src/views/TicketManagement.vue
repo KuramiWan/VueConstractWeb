@@ -1,7 +1,81 @@
 <template>
+  <NotificationGroup group="success">
+    <div
+        class="fixed inset-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none"
+    >
+      <div class="w-full max-w-sm">
+        <Notification
+            v-slot="{ notifications }"
+            enter="transform ease-out duration-300 transition"
+            enter-from="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-4"
+            enter-to="translate-y-0 opacity-100 sm:translate-x-0"
+            leave="transition ease-in duration-500"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
+            move="transition duration-500"
+            move-delay="delay-300"
+        >
+          <div
+              class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
+              v-for="notification in notifications"
+              :key="notification.id"
+          >
+            <div class="flex items-center justify-center w-12 bg-green-500">
+              <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
+              </svg>
+            </div>
 
+            <div class="px-4 py-2 -mx-3">
+              <div class="mx-3">
+                <span class="font-semibold text-green-500">{{ notification.title }}</span>
+                <p class="text-sm text-gray-600">{{ notification.text }}</p>
+              </div>
+            </div>
+          </div>
+        </Notification>
+      </div>
+    </div>
+  </NotificationGroup>
+  <NotificationGroup group="failed">
+    <div
+        class="fixed inset-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none"
+    >
+      <div class="w-full max-w-sm">
+        <Notification
+            v-slot="{ notifications }"
+            enter="transform ease-out duration-300 transition"
+            enter-from="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-4"
+            enter-to="translate-y-0 opacity-100 sm:translate-x-0"
+            leave="transition ease-in duration-500"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
+            move="transition duration-500"
+            move-delay="delay-300"
+        >
+          <div
+              class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
+              v-for="notification in notifications"
+              :key="notification.id"
+          >
+            <div class="flex items-center justify-center w-12 bg-pink-500">
+              <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
+              </svg>
+            </div>
+
+            <div class="px-4 py-2 -mx-3">
+              <div class="mx-3">
+                <span class="font-semibold text-green-500">{{ notification.title }}</span>
+                <p class="text-sm text-gray-600">{{ notification.text }}</p>
+              </div>
+            </div>
+          </div>
+        </Notification>
+      </div>
+    </div>
+  </NotificationGroup>
   <div class="mt-4">
-
     <div class="sm:px-6 w-full">
       <div class="px-4 md:px-10 py-4 md:py-7">
         <div class="flex items-center justify-between">
@@ -20,7 +94,7 @@
           <div class="flex items-center">
             <a class="rounded-full ring-1 focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800" href=" javascript:void(0)">
               <div class="py-2 px-8 text-gray-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 rounded-full" @click = "selector($event)">
-                <p>已完成</p>
+                <p>未完成</p>
               </div>
             </a>
             <a class="rounded-full ring-1 focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
@@ -39,7 +113,7 @@
               </div>
             </a>
           </div>
-          <button onclick="popuphandler(true)" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+          <button @click ="MultiDelete()" class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
             <p class="text-sm font-medium leading-none text-white">删除</p>
           </button>
         </div>
@@ -50,7 +124,7 @@
               <td>
                 <div class="ml-5">
                   <div class="bg-gray-200 dark:bg-gray-800  rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
-                    <input placeholder="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
+                    <input placeholder="checkbox" id="checkbox" type="checkbox" class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" @click ="getRowValue(ticketItem.id,$event)"  />
                     <div class="check-icon hidden bg-indigo-700 text-white rounded-sm">
                       <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/tasks-svg7.svg" alt="check-icon">
                     </div>
@@ -114,7 +188,7 @@
                     </label>
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-base-200 border">
                       <li><a>编辑</a></li>
-                      <li><a>删除</a></li>
+                      <li @click ="deleteItem(ticketItem.id)"><a>删除</a></li>
 
                     </ul>
                   </div>
@@ -200,11 +274,33 @@
 <script setup>
 import {ref} from "vue";
 import {request} from "../util/Interceptor";
-
+let checkedList = new Set();
 let ticketList = ref([]);
-let order = ref('最新')
-let state = ref('')
+let order = ref('最新');
+let state = ref('');
+//多删除
+function MultiDelete(){
+  let array = Array.from(checkedList);
+  request.post("/admin/deleteTicket", array).then(response =>{
+    let data = response.data;
+    if (data.code === 10000){
+      let value = ticketList.value;
+      for (let j = 0;j<array.length;j++){
 
+        for (let i = 0;i<value.length;i++){
+          if (array[j] === value[i].id){
+            value.splice(i,1)
+            console.log("remove")
+          }
+        }
+      }
+    }
+  }).catch(
+      error =>{
+        console.log(error)
+      }
+  )
+}
 function alterItem(id,state){
   request.post('admin/alterTicket',{
     id : id,
@@ -216,14 +312,35 @@ function alterItem(id,state){
 function changeState(event,id){
   alterItem(id,event.target.value)
 }
-function deleteItem(){
-
+function deleteItem(ticketId){
+  request.post("/admin/deleteTicket",{ticketId}).then(
+      response =>{
+        let data = response.data;
+        if (data.code === 10000){
+          let value = ticketList.value;
+          for (let i = 0;i<value.length;i++) {
+            if (ticketId === value[i].id) {
+              value.splice(i, 1)
+            }
+          }
+        }
+      }
+  ).catch(error =>{
+    console.log(error)
+  })
 }
 function add(){
 
 }
+function getRowValue(id,event){
+  if (event.target.checked){
+    checkedList.add(id);
+  }else {
+    checkedList.delete(id);
+  }
+
+}
 function selectTicket(){
-  console.log(order)
   let data;
   request.get('/admin/getTicketList',{
     params:{
@@ -243,8 +360,6 @@ function selector(event){
   selectTicket();
 }
 function dropdownFunction(element) {
-  console.log(element)
-
 }
 onMounted(()=>{
   selectTicket("已完成")

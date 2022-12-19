@@ -81,41 +81,74 @@
       </div>
     </div>
     <div class="bg-base-100 text-base-content flex flex-col  items-center py-4 lg:w-3/4">
+      <div class="pt-5 pb-3 mt-10 mb-4"><p class="font-semibold text-4xl">活动公告</p></div>
+      <div class="flex-col divide-y divide-slate-200" v-for="announcement in announcements" :key ="announcement.id">
+        <router-link :to ="/Announcement/+ announcement.id">
+          <div class="mt-4 flex-col text-left hover:bg-base-200 rounded">
+            <p class="font-semibold text-2xl pl-4 text-left">{{ announcement.title }}</p>
+            <p class="text-left italic">{{ announcement.describe }}</p>
+          </div>
+        </router-link>
+      </div>
+    </div>
+    <div class="bg-base-100 text-base-content flex flex-col  items-center py-4 lg:w-3/4">
       <div class="pt-5 pb-3 mt-10 mb-4"><p class="font-semibold text-2xl">快速入口</p></div>
         <div class="flex justify-center flex-col items-center flex-wrap flex-grow w-full my-8">
-          <div class="px-4 flex-grow flex items-center justify-center flex-col max-w-1/3">
-            <div class="fill-current">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-              </svg>
+
+          <router-link to="/contract">
+            <div class="px-4 flex-grow flex items-center justify-center flex-col max-w-1/3">
+
+              <div class="fill-current">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="stroke-2 w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
+                </svg>
+              </div>
+              <div class="my-4">预约请求</div>
+              <div class="my-4">填写你的基本信息预约服务,按指定时间携带电脑线下见面,解决问题</div>
             </div>
-            <div class="my-4">预约请求</div>
-            <div class="my-4">填写你的基本信息预约服务,按指定时间携带电脑线下见面,解决问题</div>
-          </div>
-          <div class="px-4 flex-grow flex items-center justify-center flex-col max-w-1/3">
-            <div class="fill-current">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-              </svg>
+          </router-link>
+
+          <router-link to="/kanban">
+            <div class="px-4 flex-grow flex items-center justify-center flex-col max-w-1/3">
+              <div class="fill-current">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="stroke-2 w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
+                </svg>
+              </div>
+              <div class="my-4">预约列表</div>
+              <div class="my-4">查看预约列表,了解预约状态</div>
             </div>
-            <div class="my-4">预约列表</div>
-            <div class="my-4">查看预约列表,了解预约状态</div>
-          </div>
-          <div class="px-4 flex-grow flex items-center justify-center flex-col max-w-1/3">
-            <div class="fill-current">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-2 w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-              </svg>
+          </router-link>
+          <router-link to ="/archives">
+            <div class="px-4 flex-grow flex items-center justify-center flex-col max-w-1/3">
+              <div class="fill-current">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="stroke-2 w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
+                </svg>
+              </div>
+                <div class="my-4">问题归档</div>
+                <div class="my-4">过往问题收集,了解常见问题,学习计算机知识</div>
             </div>
-            <div class="my-4">问题归档</div>
-            <div class="my-4">过往问题收集,了解常见问题,学习计算机知识</div>
-          </div>
+          </router-link>
         </div>
     </div>
   </div>
 </template>
-<script lang="ts">
-export default {
+<script setup>
+import {request} from "../util/Interceptor";
 
-}
+let announcements = ref([]);
+onMounted(() =>{
+  request.get('/getAnnouncement').then(response =>{
+    announcements.value = response.data.data;
+  }).catch(error =>{
+    console.log(error)
+  })
+})
 </script>

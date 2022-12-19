@@ -45,6 +45,14 @@ const routes : RouteRecordRaw[] = [
                 }
             },
             {
+                path:'/announcement/:id',
+                name: 'Announcement',
+                component:() => import('./views/Announcement.vue'),
+                meta:{
+                    title: '公告页'
+                }
+            },
+            {
                 path:'/archives/detail/:id',
                 name:'archives',
                 component:() =>import('./views/ArchivesDetail.vue'),
@@ -66,6 +74,7 @@ const routes : RouteRecordRaw[] = [
         redirect:'/login',
         component: () => import("./components/AdminLayout.vue"),
         meta:{
+            requiresAuth: true,
             title: '管理员'
         },
         children:[
@@ -90,7 +99,7 @@ const routes : RouteRecordRaw[] = [
     },
     {
         path: '/login',
-        name: 'login',
+        name: 'Login',
         component: () => import('./views/Login.vue'),
         meta: {
             title: '登录页面'
@@ -103,6 +112,17 @@ const router = createRouter({
     history: createWebHashHistory(),  // 这里采用的是 hash 模式
     routes                            // 上面声明的路由规则
 })
-
+router.beforeEach(async (to,from) =>{
+    if (to.matched.some((record) =>{
+        return record.meta.requiresAuth
+    })&&!isAuthenticated()&&to.name !== "Login")
+    {
+        return {name :"Login"}
+    }
+})
+const isAuthenticated = () =>{
+    let item = localStorage.getItem("Authenticate");
+    return item != null;
+}
 // 4.
 export default router

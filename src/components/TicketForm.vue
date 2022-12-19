@@ -39,10 +39,10 @@
         <span class="label-text-alt text-pink-600">必填</span>
       </label>
     </div>
-    <div class="form-control w-full max-w-xs">
-      <label for="" class="label ">上传图片</label>
-      <input type="file"  accept=""  @change="uploadImage" class="" multiple>
-    </div>
+<!--    <div class="form-control w-full max-w-xs">-->
+<!--      <label for="" class="label ">上传图片</label>-->
+<!--      <input type="file"  accept=""  @change="uploadImage" class="" multiple>-->
+<!--    </div>-->
     <div class=" text-center">
       <button class="btn btn-primary rounded-full mt-4" @click="commit">提交预约</button>
     </div>
@@ -57,25 +57,15 @@ import {notify} from "notiwind";
 //正则
 const phoneMatch = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/
 const router = useRouter();
-let img: string | any[] | null = [], phone = ref(''),
+let  phone = ref(''),
     userName = ref(''),
-    question = ref(''), tel = ref(''),
-    previewImage: String | ArrayBuffer | null = null;
-
-const uploadImage = (e:any) =>{
-  img = e.target.files
-}
+    question = ref(''), tel = ref('');
 const commit =()=>{
 
   if (checkForm()){
     return false;
   }
   let formData = new FormData();
-  if (img!=null){
-    for (let i = 0;i < img.length;i++) {
-      formData.append('images', img[i])
-    }
-  }
   formData.append("name",userName.value)
   formData.append("phone",phone.value)
   formData.append("question",question.value)
@@ -83,7 +73,6 @@ const commit =()=>{
     'Content-Type': 'multipart/form-data'
   }
   request.post('/addTicket',formData,{headers:headers}).then(response =>{
-
     router.push('/#/')
   }).catch(e=>{
     console.log(e)

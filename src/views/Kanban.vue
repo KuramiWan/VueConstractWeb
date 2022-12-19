@@ -23,7 +23,6 @@
 </div>
 </template>
 <script lang="ts" setup>
-import {Popover} from "@headlessui/vue";
 import {request} from "../util/Interceptor";
 
 let kanbanLists=ref([
@@ -40,7 +39,6 @@ onMounted(() =>{
   request.get('/getTicket').then(
     response =>{
       kanbanLists.value = response.data.data
-      console.log(kanbanLists)
     }
   )
 })
